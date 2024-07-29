@@ -17,9 +17,14 @@ class rickAndMordy {
         this.search(this.searchInput, results);
         app.clicked(results);
       })
+      .ten(()=>{})
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  grtEpisodes(id,arry){
+    arry.
   }
 
   search(input, searchArry) {
@@ -61,7 +66,14 @@ class rickAndMordy {
 
   clicked(arry) {
     this.charectersContainer.addEventListener("click", (e) => {
-      const characterId = e.target.id;
+      let characterId = null;
+      console.log(e.target.tagName);
+      if (e.target.tagName == "H2" || e.target.tagName == "P") {
+        characterId = e.target.parentElement.parentElement.parentElement.id;
+      } else if (e.target.tagName == "IMG") {
+        characterId = e.target.parentElement.parentElement.id;
+      } else {
+      }
       const resultsRender = arry.filter((item) => characterId == item.id);
       console.log(characterId);
       console.log(resultsRender);
