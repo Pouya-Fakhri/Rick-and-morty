@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Rick and morty</title>
   </head>
-  <body class="bg-[#021526]" >
-    <main class="bg-[#021526] px-14 py-8 overflow-hidden">
+  <body class="bg-[#021526]">
+    <main class="bg-[#021526] w-screen h-screen px-14 py-8 overflow-hidden">
       <nav
-        class="bg-[#03346E] w-full h-14 flex justify-between items-center px-6 rounded-xl"
+        class="bg-[#03346E] h-14 flex justify-between items-center px-6 rounded-xl"
       >
         <div class="text-white">logo</div>
         <input
@@ -50,13 +51,22 @@
           </svg>
         </div>
       </nav>
-      <section class="mt-4 h-full flex">
-        <div class="characters-part w-1/3 h-full p-2"></div>
-        <div class="info-part w-2/3 h-auto py-5 flex">
-          <div class="episodes-container " >
-            <h1>
+      <section class="mt-8 h-full flex justify-between">
+        <div
+          class="characters-part w-1/3 h- "
+        ></div>
 
-            </h1>
+        <div class="w-[65%] h-full  flex flex-col " >
+          <div
+            class="info-part w-full  py-5 flex "
+          ></div>
+
+          <div
+            class="episodes-container w-full h-1/2 bg-[#03346E] rounded-3xl p-3 text-white overflow-y-scroll hide-scroll-bar"
+          >
+            <h2 class="text-3xl opacity-75 self-start">List of Epilodes</h2>
+
+            <ol class="list-decimal list-inside" id="episodes-list"></ol>
           </div>
         </div>
       </section>
