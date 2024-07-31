@@ -53,25 +53,25 @@
       </nav>
       <section class="mt-8 h-full flex justify-between">
         <div
-          class="characters-part w-1/3 h- "
+          class="characters-part h-[90%] w-1/3 overflow-y-scroll hide-scroll-bar"
         ></div>
 
-        <div class="w-[65%] h-full  flex flex-col " >
-          <div
-            class="info-part w-full  py-5 flex "
-          ></div>
+        <div class="w-[65%] h-full flex flex-col">
+          <div class="info-part w-full py-5 flex"></div>
+          <div class="episodes-part h-full"></div>
 
-          <div
+          <!-- <div
             class="episodes-container w-full h-1/2 bg-[#03346E] rounded-3xl p-3 text-white overflow-y-scroll hide-scroll-bar"
           >
-            <h2 class="text-3xl opacity-75 self-start">List of Epilodes</h2>
-
-            <ol class="list-decimal list-inside" id="episodes-list"></ol>
-          </div>
+            
+          </div> -->
         </div>
       </section>
     </main>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script src="./app.js"></script>
+    <!-- <button class="w-44 bg-red-600 h-8 text-white rounded font-bold">
+      add to favourites
+    </button> -->
   </body>
 </html>
