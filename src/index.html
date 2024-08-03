@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Rick and morty</title>
   </head>
-  <body class="bg-[#021526]">
-    <main class="bg-[#021526] w-screen h-screen px-14 py-8 overflow-hidden">
+  <body class="bg-[#201E43]">
+    <main class="bg-[#201E43] w-screen h-screen px-14 py-8 overflow-hidden">
       <nav
-        class="bg-[#03346E] h-14 flex justify-between items-center px-6 rounded-xl"
+        class="bg-[#134B70] h-14 flex justify-between items-center px-6 rounded-xl"
       >
-        <div class="text-white">logo</div>
+        <div class="text-[#eee]">logo</div>
         <input
           id="search"
           type="search"
           placeholder="search..."
-          class="bg-[#2b62a5] p-1 rounded"
+          class="bg-[#508C9B] p-1 rounded"
         />
-        <div class="text-[#5281b9]">fuond 20 characters</div>
+        <div class="text-[#eee]">fuond 20 characters</div>
         <div class="w-2">
           <svg
+            class="favourit-heart notClick"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             fill="#f00000"
@@ -51,12 +52,22 @@
           </svg>
         </div>
       </nav>
+      <div
+        class="favoritContainer fixed right-[30vw] mt-[-5%] z-50 hidden flex-col p-4 w-1/3 h-[90%] bg-slate-800 rounded-3xl"
+      >
+        <span
+          class="close text-[50px] self-end text-[#eee] bg-[#eeeeee2f] w-14 h-14 flex justify-center items-center rounded-full"
+          >x</span
+        >
+      </div>
       <section class="mt-8 h-full flex justify-between">
         <div
           class="characters-part h-[90%] w-1/3 overflow-y-scroll hide-scroll-bar"
         ></div>
 
-        <div class="w-[65%] h-full flex flex-col">
+        <div
+          class="w-[65%] h-full flex flex-col overflow-y-scroll hide-scroll-bar"
+        >
           <div class="info-part w-full py-5 flex"></div>
           <div class="episodes-part h-full"></div>
 

@@ -42,33 +42,61 @@ class rickAndMordy {
   clicked(arry) {
     this.charactersContainer.addEventListener("click", (e) => {
       let characterId = null;
-      
+
       if (e.target.tagName == "H2" || e.target.tagName == "P") {
         characterId = e.target.parentElement.parentElement.parentElement.id;
       } else if (e.target.tagName == "IMG") {
         characterId = e.target.parentElement.parentElement.id;
       } else if (e.target.classList.contains("favourites-btn")) {
         characterId = e.target.parentElement.id;
+        console.log(characterId);
         const favourit = arry.find((item) => characterId == item.id);
-        const isFavourite = this.favourites.some(f => f.id === favourit.id);
-        if (!isFavourite) {
+        console.log(favourit.id);
+        let isFavourite = this.favourites.some((f) => f.id === favourit.id);
+        const svg = e.target
+        console.log(svg)
+        console.log(isFavourite);
+        if(!isFavourite) {
           this.favourites.push(favourit);
           localStorage.setItem("favourites", JSON.stringify(this.favourites));
+          svg.setAttribute("fill", "#f00000");
         } else {
-          this.favourites = this.favourites.filter(f => f.id !== favourit.id);
+          this.favourites = this.favourites.filter((f) => f.id !== favourit.id);
           localStorage.setItem("favourites", JSON.stringify(this.favourites));
-        
+          svg.setAttribute("fill", "#000000");
         }
       } else {
         characterId = e.target.id;
       }
-    
+      console.log(this.favourites)
       const resultsRender = arry.filter((item) => characterId == item.id);
       this.charectersInfoRenderUi(resultsRender, this.infoContainer);
+      
       this.grtEpisodes(resultsRender);
     });
   }
-  
+
+  favouritClicked(){
+    const favouritHeart = document.querySelector(".favourit-heart")
+    const favouritContainer =document.querySelector(".favoritContainer")
+    console.log(favouritContainer);
+    favouritHeart.addEventListener("click",()=>{
+      if(favouritHeart.classList.contains("notClick")){
+        console.log("click");
+        favouritContainer.classList.remove("hidden");
+        favouritContainer.classList.add("flex")
+        this.charectersRenderUi(JSON.parse(localStorage.getItem("favourites")),favouritContainer)
+        favouritHeart.classList.remove("notClick")
+        favouritHeart.classList.add("click")
+      }else if(favouritHeart.classList.contains("click")){
+        favouritContainer.classList.remove("flex")
+        favouritContainer.classList.add("hidden");
+        favouritHeart.classList.remove("click")
+        favouritHeart.classList.add("notClick")
+      }
+    })
+    
+  }
   
   grtEpisodes(character) {
     this.episodesList = [];
@@ -99,7 +127,7 @@ class rickAndMordy {
       "episodes-container",
       "w-full",
       "h-1/2",
-      "bg-[#03346E]",
+      "bg-[#134B70]",
       "rounded-3xl",
       "p-3",
       "text-white",
@@ -138,7 +166,7 @@ class rickAndMordy {
       const div = document.createElement("div");
       div.classList.add(
         "caracter",
-        "bg-[#03346E]",
+        "bg-[#134B70]",
         "w-full",
         "h-20",
         "rounded-xl",
@@ -153,7 +181,7 @@ class rickAndMordy {
               <img src="${
                 item.image
               }" alt="" class="bg-slate-600 w-14 h-14 rounded" />
-              <div class="name text-white ">
+              <div class="name text-[#eee] ">
                 <h2> ${this.genderStiker(item)} ${item.name}</h2>
                 <p> ${item.status} - ${item.species}</p>
               </div>
@@ -163,7 +191,7 @@ class rickAndMordy {
             class="favourites-btn w-8 bg-white h-8 text-white rounded font-bold flex justify-center items-center p-1"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
-            fill="#f00000"
+            fill="#000000"
             height="20px"
             width="20px"
             version="1.1"
@@ -201,17 +229,17 @@ class rickAndMordy {
         "info",
         "w-full",
         "h-full",
-        "bg-[#03346E]",
+        "bg-[#134B70]",
         "rounded-3xl",
         "overflow-hidden",
         "flex"
       );
       div.innerHTML = `<img src="${contentArry[0].image}" alt="" />
             <div class="textsContainer h-full p-2">
-              <h2 class="text-lg text-white font-semibold">${contentArry[0].status} ${contentArry[0].species}</h2>
+              <h2 class="text-lg text-[#eee] font-semibold">${contentArry[0].status} ${contentArry[0].species}</h2>
               <div>
-                <p class="text-lg text-white/40 font-medium">Last known location:</p>
-                <p class="text-lg text-white font-bold">${contentArry[0].location.name}</p>
+                <p class="text-lg text-[#eee]/40 font-medium">Last known location:</p>
+                <p class="text-lg text-[#eee] font-bold">${contentArry[0].location.name}</p>
               </div>
              
     </button>
@@ -239,3 +267,4 @@ const app = new rickAndMordy(
   document.querySelector("#search")
 );
 app.get();
+app.favouritClicked()

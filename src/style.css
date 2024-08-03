@@ -1,7 +1,14 @@
 .hide-scroll-bar {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-  }
-  .hide-scroll-bar::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
-  }
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none; 
+}
+.glass-bg {
+  background: rgba(32, 30, 67, 0.53);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+}
